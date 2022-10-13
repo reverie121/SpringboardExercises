@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="title-input">Movie Title: <input name="title-input" id="title-input"></label>
+        <label for="rating-input">Movie Rating: <input name="rating-input" id="rating-input"></label>
+        <br>
+        <button id="form-button">Submit</button>
+    </form>
+    <div id="movie-list"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $('#form-button').on('click', function(e) {
+            e.preventDefault();
+            if ($('#rating-input').val() >= 0 && $('#rating-input').val() <= 10 && $('#title-input').val().length >= 2) {
+                $('#movie-list').append(`<div>Movie: ${$('#title-input').val()} Rating: ${$('#rating-input').val()} <button>Remove</button></div>`);
+                $('#movie-list button').on('click', function(e) {
+                    $(this).parent().remove();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
